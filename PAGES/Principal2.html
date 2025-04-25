@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí - Ian Gabriel Zuñiga Solano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #0a1a3a, #1e3c72);
+            color: #e0e6f0;
+            line-height: 1.8;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Falling code particles and floating programming icons */
+        #particles, #tech-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            user-select: none;
+        }
+
+        .tech-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.7;
+            user-select: none;
+            animation: float 12s infinite ease-in-out, pulse 2s infinite ease-in-out;
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            50% { transform: translateY(25px) translateX(10px) rotate(15deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #2a5298, #3b82f6);
+            color: #fff;
+            text-align: center;
+            padding: 5rem 1rem;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        header h1 {
+            font-size: 3.6rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .profile-img {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.12);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-img.fade {
+            opacity: 0;
+        }
+
+        .social-links {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .social-links a:hover {
+            transform: rotate(360deg) scale(1.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+
+        .social-links img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .social-links a:hover img {
+            transform: scale(1.25);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: rotate(45deg);
+        }
+
+        .info-card:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) translate(20%, 20%);
+        }
+
+        .info-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-card h3 {
+            color: #e0e6f0;
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            transition: color 0.4s ease;
+        }
+
+        .info-card:hover h3 {
+            color: #93c5fd;
+        }
+
+        .info-card p {
+            margin-bottom: 0.6rem;
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+
+        .info-card:hover p {
+            transform: translateX(8px);
+            color: #bfdbfe;
+        }
+
+        .about, .achievements {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 4rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .about:hover, .achievements:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .about h2, .achievements h2 {
+            color: #e0e6f0;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .achievements ul li {
+            position: relative;
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+
+        .achievements ul li:hover {
+            transform: translateX(10px);
+            color: #bfdbfe;
+        }
+
+        .achievements ul li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            margin-top: 4rem;
+            font-size: 1.2rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .social-links a {
+                width: 55px;
+                height: 55px;
+            }
+
+            .social-links img {
+                width: 32px;
+                height: 32px;
+            }
+
+            .info-card {
+                padding: 2rem;
+            }
+
+            .about, .achievements {
+                padding: 2rem;
+            }
+
+            .tech-icon {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles"></div>
+    <div id="tech-icons"></div>
+    <header>
+        <h1>Ian Gabriel Zuñiga Solano</h1>
+        <p>Un poco sobre mi vida y mi pasión por la Ingeniería de Software y la IA</p>
+    </header>
+
+    <div class="container">
+        <div class="profile">
+            <img src="image1.png" alt="Foto de Ian Gabriel" class="profile-img">
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1BWag2X9rp/" target="_blank" title="Facebook">
+                    <img src="fb.png" alt="Facebook Logo">
+                </a>
+                <a href="https://www.instagram.com/ianz._78?igsh=Y2ZwcXhpZnRvcWR1" target="_blank" title="Instagram">
+                    <img src="instagram.png" alt="Instagram Logo">
+                </a>
+                <a href="https://wa.me/51925976376" target="_blank" title="WhatsApp">
+                    <img src="whasap.png" alt="WhatsApp Logo">
+                </a>
+                <a href="https://pe.linkedin.com/in/ian-gabriel-zu%C3%B1iga-4b01a1301" target="_blank" title="LinkedIn">
+                    <img src="linkdin.png" alt="LinkedIn Logo">
+                </a>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Información Personal</h3>
+                <p><strong>Nombre:</strong> Ian Gabriel Zuñiga Solano</p>
+                <p><strong>Edad:</strong> 19 años</p>
+                <p><strong>Fecha de Nacimiento:</strong> 03/10/2005</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Ubicación</h3>
+                <p><strong>Lugar de Nacimiento:</strong> Tocache, Perú</p>
+                <p><strong>Residencia Actual:</strong> Huánuco, Perú</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Educación</h3>
+                <p><strong>Carrera:</strong> Ingeniería de Software</p>
+                <p><strong>Institución:</strong> Senati</p>
+                <p><strong>Año de Graduación:</strong> 2025</p>
+            </div>
+        </div>
+
+        <div class="about">
+            <h2>Sobre Mí</h2>
+            <p>Soy un joven apasionado por la tecnología y la innovación, nacido en Trujillo y actualmente residiendo en Huánuco, Perú. Desde pequeño, me ha fascinado resolver problemas y crear soluciones que impacten positivamente. Mi curiosidad me llevó a explorar el mundo de la programación y la inteligencia artificial, donde he encontrado mi verdadera pasión. Disfruto participar en competencias tecnológicas como hackatones y colaborar en proyectos que desafían mi creatividad y habilidades.</p>
+            <p>Mi objetivo es convertirme en un líder en el campo de la ingeniería de software y la IA, contribuyendo a proyectos innovadores que transformen la forma en que las personas interactúan con la tecnología. Estoy comprometido con el aprendizaje continuo, siempre buscando nuevas oportunidades para crecer y dejar una huella positiva.</p>
+        </div>
+
+        <div class="about">
+            <h2>Sobre Mi Carrera</h2>
+            <p>Como estudiante de Ingeniería de Software en Senati, he desarrollado una sólida base en programación y desarrollo de soluciones tecnológicas. Mis estudios me han permitido dominar lenguajes como JavaScript, Python y C++, así como trabajar con frameworks modernos y tecnologías de IA. Estoy a punto de graduarme en 2025 y estoy emocionado por llevar mis conocimientos al mundo profesional.</p>
+            <p>Me apasiona crear aplicaciones web, sistemas backend, aplicaciones móviles para Android y soluciones impulsadas por inteligencia artificial. Mi enfoque está en escribir código limpio y eficiente, optimizando procesos e innovando constantemente. Aspiro a trabajar en proyectos que combinen tecnología y propósito, generando un impacto positivo en la sociedad.</p>
+        </div>
+
+        <div class="achievements">
+            <h2>Logros y Proyectos</h2>
+            <ul>
+                <li>Participé y gané múltiples hackatones, desarrollando aplicaciones web y móviles que resolvieron problemas reales, fortaleciendo mi pensamiento crítico y trabajo en equipo.</li>
+                <li>Desarrollé un software en Python con inteligencia artificial capaz de detectar personas, equipos de protección personal (EPP), emociones, lenguaje de señas, armas letales, humo y fuego.</li>
+                <li>Creé páginas web y aplicaciones móviles como proyectos académicos y personales, utilizando tecnologías como HTML, CSS, JavaScript y frameworks como React.</li>
+                <li>Colaboré en proyectos de código abierto, contribuyendo a repositorios en GitHub y aprendiendo mejores prácticas de desarrollo colaborativo.</li>
+                <li>Obtuve certificaciones en Python y desarrollo web, ampliando mis habilidades técnicas y conocimientos en la industria.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Ian Gabriel Zuñiga Solano - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Animación suave al hacer scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto de aparición de las tarjetas y secciones
+        const elements = document.querySelectorAll('.info-card, .about, .achievements');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        elements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Animación de cambio de imagen de perfil
+        const profileImg = document.querySelector('.profile-img');
+        const images = [
+            'image1.png',
+            'image2.png',
+            'image3.png',
+            'image4.png'
+        ];
+        let currentIndex = 0;
+
+        function changeImage() {
+            profileImg.classList.add('fade');
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                profileImg.src = images[currentIndex];
+                profileImg.alt = `Foto de Ian Gabriel ${currentIndex + 1}`;
+                profileImg.classList.remove('fade');
+            }, 500);
+        }
+
+        setInterval(changeImage, 5000);
+        changeImage();
+
+        // Falling code particles
+        const particlesContainer = document.getElementById('particles');
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const symbols = ['0', '1', '{', '}', '<', '>'];
+            particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '-10px';
+            particle.style.opacity = 0.3 + Math.random() * 0.3;
+            const speed = 2 + Math.random() * 3;
+            particlesContainer.appendChild(particle);
+
+            function animateParticle() {
+                let yPos = parseFloat(particle.style.top) || -10;
+                if (yPos > window.innerHeight) {
+                    particle.remove();
+                } else {
+                    yPos += speed;
+                    particle.style.top = yPos + 'px';
+                    particle.style.opacity = 0.3 - (yPos / window.innerHeight) * 0.3;
+                    requestAnimationFrame(animateParticle);
+                }
+            }
+
+            animateParticle();
+        }
+
+        setInterval(createParticle, 200);
+
+        // Floating programming language icons
+        const techIconsContainer = document.getElementById('tech-icons');
+        function createTechIcon() {
+            const icon = document.createElement('img');
+            icon.className = 'tech-icon';
+            const icons = [
+                'python.png',     // Python
+                'javascript.png', // JavaScript
+                'java.png',       // Java
+                'react.png',      // React
+                'android.png',    // Android
+                'css.png',        // CSS
+                'html.png',       // HTML
+                'ai.png'          // AI/ML
+            ];
+            icon.src = icons[Math.floor(Math.random() * icons.length)];
+            icon.alt = 'Programming Icon';
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.top = Math.random() * 100 + 'vh';
+            icon.style.animationDuration = 10 + Math.random() * 5 + 's';
+            icon.style.animationDelay = Math.random() * 3 + 's';
+            techIconsContainer.appendChild(icon);
+
+            setTimeout(() => {
+                icon.remove();
+            }, 15000);
+        }
+
+        setInterval(createTechIcon, 800);
+    </script>
+</body>
+</html>
