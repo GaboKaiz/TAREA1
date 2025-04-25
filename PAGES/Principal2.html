@@ -253,6 +253,8 @@
         color: #bfdbfe;
       }
 
+      .skills,
+      .projects,
       .about,
       .achievements {
         background: rgba(255, 255, 255, 0.05);
@@ -265,17 +267,117 @@
         transition: transform 0.4s ease, box-shadow 0.4s ease;
       }
 
+      .skills:hover,
+      .projects:hover,
       .about:hover,
       .achievements:hover {
         transform: translateY(-8px);
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
       }
 
+      .skills h2,
+      .projects h2,
       .about h2,
       .achievements h2 {
         color: #e0e6f0;
         margin-bottom: 1.5rem;
         font-size: 2.2rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-card,
+      .project-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(8px);
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.4s ease, box-shadow 0.4s ease,
+          background 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-card::before,
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.3),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        transform: rotate(45deg);
+      }
+
+      .skill-card:hover::before,
+      .project-card:hover::before {
+        opacity: 1;
+        transform: rotate(45deg) translate(20%, 20%);
+      }
+
+      .skill-card:hover,
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .skill-card img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 1rem;
+        transition: transform 0.4s ease;
+      }
+
+      .project-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .skill-card h3,
+      .project-card h3 {
+        font-size: 1.3rem;
+        color: #e0e6f0;
+        margin-bottom: 0.5rem;
+        transition: color 0.4s ease;
+      }
+
+      .skill-card:hover h3,
+      .project-card:hover h3 {
+        color: #93c5fd;
+      }
+
+      .project-card p {
+        font-size: 0.95rem;
+        color: #bfdbfe;
+        line-height: 1.5;
       }
 
       .achievements ul {
@@ -338,13 +440,45 @@
           height: 32px;
         }
 
-        .info-card {
-          padding: 2rem;
-        }
-
+        .info-card,
+        .skills,
+        .projects,
         .about,
         .achievements {
           padding: 2rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .skill-card,
+        .project-card {
+          padding: 1rem;
+        }
+
+        .skill-card img {
+          width: 50px;
+          height: 50px;
+        }
+
+        .project-card img {
+          height: 140px;
+        }
+
+        .skill-card h3,
+        .project-card h3 {
+          font-size: 1.1rem;
+        }
+
+        .project-card p {
+          font-size: 0.85rem;
         }
 
         .tech-icon {
@@ -359,44 +493,26 @@
     <div id="tech-icons"></div>
     <header>
       <h1>Ian Gabriel Zuñiga Solano</h1>
-      <p>
-        Un poco sobre mi vida y mi pasión por la Ingeniería de Software y la IA
-      </p>
+      <p>Un poco sobre mi vida y mi pasión por la Ingeniería de Software y la IA</p>
     </header>
 
     <div class="container">
       <div class="profile">
         <img src="image1.png" alt="Foto de Ian Gabriel" class="profile-img" />
         <div class="social-links">
-          <a
-            href="https://www.facebook.com/share/1BWag2X9rp/"
-            target="_blank"
-            title="Facebook"
-          >
+          <a href="https://www.facebook.com/share/1BWag2X9rp/" target="_blank" title="Facebook">
             <img src="fb.png" alt="Facebook Logo" />
           </a>
-          <a
-            href="https://www.instagram.com/ianz._78?igsh=Y2ZwcXhpZnRvcWR1"
-            target="_blank"
-            title="Instagram"
-          >
+          <a href="https://www.instagram.com/ianz._78?igsh=Y2ZwcXhpZnRvcWR1" target="_blank" title="Instagram">
             <img src="instagram.png" alt="Instagram Logo" />
           </a>
           <a href="https://wa.me/51925976376" target="_blank" title="WhatsApp">
             <img src="whasap.png" alt="WhatsApp Logo" />
           </a>
-          <a
-            href="https://pe.linkedin.com/in/ian-gabriel-zu%C3%B1iga-4b01a1301"
-            target="_blank"
-            title="LinkedIn"
-          >
+          <a href="https://pe.linkedin.com/in/ian-gabriel-zu%C3%B1iga-4b01a1301" target="_blank" title="LinkedIn">
             <img src="linkdin.png" alt="LinkedIn Logo" />
           </a>
-          <a
-            href="https://github.com/GaboKaiz"
-            target="_blank"
-            title="GitHub Logo"
-          >
+          <a href="https://github.com/GaboKaiz" target="_blank" title="GitHub">
             <img src="github.png" alt="GitHub Logo" />
           </a>
         </div>
@@ -424,44 +540,82 @@
         </div>
       </div>
 
+      <div class="skills">
+        <h2>Habilidades</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <img src="python.png" alt="Python" />
+            <h3>Python</h3>
+          </div>
+          <div class="skill-card">
+            <img src="javascript.png" alt="JavaScript" />
+            <h3>JavaScript</h3>
+          </div>
+          <div class="skill-card">
+            <img src="java.png" alt="Java" />
+            <h3>Java</h3>
+          </div>
+          <div class="skill-card">
+            <img src="react.png" alt="React" />
+            <h3>React</h3>
+          </div>
+          <div class="skill-card">
+            <img src="android.png" alt="Android" />
+            <h3>Android</h3>
+          </div>
+          <div class="skill-card">
+            <img src="css.png" alt="CSS" />
+            <h3>CSS</h3>
+          </div>
+          <div class="skill-card">
+            <img src="html.png" alt="HTML" />
+            <h3>HTML</h3>
+          </div>
+          <div class="skill-card">
+            <img src="ai.png" alt="Web Apps" />
+            <h3>Web Apps</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects">
+        <h2>Proyectos</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="proyect1.png" alt="Software de Detección de Emociones" />
+            <h3>Software de Detección de Emociones</h3>
+            <p>Detección de emociones en tiempo real, para la educación y psicología</p>
+          </div>
+          <div class="project-card">
+            <img src="proyect3.png" alt="JOS-IA" />
+            <h3>JOS-IA</h3>
+            <p>APP innovadora para realizar votaciones accesibles para personas con discapacidad</p>
+          </div>
+          <div class="project-card">
+            <img src="proyect2.png" alt="Ayni Hackhathon" />
+            <h3>Ayni Hackhathon</h3>
+            <p>Proyecto de APP para turismo en la ciudad de Huánuco</p>
+          </div>
+        </div>
+      </div>
+
       <div class="about">
         <h2>Sobre Mí</h2>
         <p>
-          Soy un joven apasionado por la tecnología y la innovación, nacido en
-          Trujillo y actualmente residiendo en Huánuco, Perú. Desde pequeño, me
-          ha fascinado resolver problemas y crear soluciones que impacten
-          positivamente. Mi curiosidad me llevó a explorar el mundo de la
-          programación y la inteligencia artificial, donde he encontrado mi
-          verdadera pasión. Disfruto participar en competencias tecnológicas
-          como hackatones y colaborar en proyectos que desafían mi creatividad y
-          habilidades.
+          Soy un joven apasionado por la tecnología y la innovación, nacido en Tocache y actualmente residiendo en Huánuco, Perú. Desde pequeño, me ha fascinado resolver problemas y crear soluciones que impacten positivamente. Mi curiosidad me llevó a explorar el mundo de la programación y la inteligencia artificial, donde he encontrado mi verdadera pasión. Disfruto participar en competencias tecnológicas como hackatones y colaborar en proyectos que desafían mi creatividad y habilidades.
         </p>
         <p>
-          Mi objetivo es convertirme en un líder en el campo de la ingeniería de
-          software y la IA, contribuyendo a proyectos innovadores que
-          transformen la forma en que las personas interactúan con la
-          tecnología. Estoy comprometido con el aprendizaje continuo, siempre
-          buscando nuevas oportunidades para crecer y dejar una huella positiva.
+          Mi objetivo es convertirme en un líder en el campo de la ingeniería de software y la IA, contribuyendo a proyectos innovadores que transformen la forma en que las personas interactúan con la tecnología. Estoy comprometido con el aprendizaje continuo, siempre buscando nuevas oportunidades para crecer y dejar una huella positiva.
         </p>
       </div>
 
       <div class="about">
         <h2>Sobre Mi Carrera</h2>
         <p>
-          Como estudiante de Ingeniería de Software en Senati, he desarrollado
-          una sólida base en programación y desarrollo de soluciones
-          tecnológicas. Mis estudios me han permitido dominar lenguajes como
-          JavaScript, Python y C++, así como trabajar con frameworks modernos y
-          tecnologías de IA. Estoy a punto de graduarme en 2025 y estoy
-          emocionado por llevar mis conocimientos al mundo profesional.
+          Como estudiante de Ingeniería de Software en Senati, he desarrollado una sólida base en programación y desarrollo de soluciones tecnológicas. Mis estudios me han permitido dominar lenguajes como JavaScript, Python y C++, así como trabajar con frameworks modernos y tecnologías de IA. Estoy a punto de graduarme en 2025 y estoy emocionado por llevar mis conocimientos al mundo profesional.
         </p>
         <p>
-          Me apasiona crear aplicaciones web, sistemas backend, aplicaciones
-          móviles para Android y soluciones impulsadas por inteligencia
-          artificial. Mi enfoque está en escribir código limpio y eficiente,
-          optimizando procesos e innovando constantemente. Aspiro a trabajar en
-          proyectos que combinen tecnología y propósito, generando un impacto
-          positivo en la sociedad.
+          Me apasiona crear aplicaciones web, sistemas backend, aplicaciones móviles para Android y soluciones impulsadas por inteligencia artificial. Mi enfoque está en escribir código limpio y eficiente, optimizando procesos e innovando constantemente. Aspiro a trabajar en proyectos que combinen tecnología y propósito, generando un impacto positivo en la sociedad.
         </p>
       </div>
 
@@ -469,28 +623,19 @@
         <h2>Logros y Proyectos</h2>
         <ul>
           <li>
-            Participé y gané múltiples hackatones, desarrollando aplicaciones
-            web y móviles que resolvieron problemas reales, fortaleciendo mi
-            pensamiento crítico y trabajo en equipo.
+            Participé y gané múltiples hackatones, desarrollando aplicaciones web y móviles que resolvieron problemas reales, fortaleciendo mi pensamiento crítico y trabajo en equipo.
           </li>
           <li>
-            Desarrollé un software en Python con inteligencia artificial capaz
-            de detectar personas, equipos de protección personal (EPP),
-            emociones, lenguaje de señas, armas letales, humo y fuego.
+            Desarrollé un software en Python con inteligencia artificial capaz de detectar personas, equipos de protección personal (EPP), emociones, lenguaje de señas, armas letales, humo y fuego.
           </li>
           <li>
-            Creé páginas web y aplicaciones móviles como proyectos académicos y
-            personales, utilizando tecnologías como HTML, CSS, JavaScript y
-            frameworks como React.
+            Creé páginas web y aplicaciones móviles como proyectos académicos y personales, utilizando tecnologías como HTML, CSS, JavaScript y frameworks como React.
           </li>
           <li>
-            Colaboré en proyectos de código abierto, contribuyendo a
-            repositorios en GitHub y aprendiendo mejores prácticas de desarrollo
-            colaborativo.
+            Colaboré en proyectos de código abierto, contribuyendo a repositorios en GitHub y aprendiendo mejores prácticas de desarrollo colaborativo.
           </li>
           <li>
-            Obtuve certificaciones en Python y desarrollo web, ampliando mis
-            habilidades técnicas y conocimientos en la industria.
+            Obtuve certificaciones en Python y desarrollo web, ampliando mis habilidades técnicas y conocimientos en la industria.
           </li>
         </ul>
       </div>
@@ -513,7 +658,7 @@
 
       // Efecto de aparición de las tarjetas y secciones
       const elements = document.querySelectorAll(
-        ".info-card, .about, .achievements"
+        ".info-card, .skills, .projects, .about, .achievements"
       );
       const observer = new IntersectionObserver(
         (entries) => {
