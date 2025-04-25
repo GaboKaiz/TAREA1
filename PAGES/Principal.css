@@ -2,107 +2,222 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-  background-color: #f0f2f5;
-  color: #333;
-  line-height: 1.6;
+  background-color: #f1f4f8;
+  color: #1a1a1a;
+  line-height: 1.8;
 }
 
 header {
-  background: linear-gradient(135deg, #2b5876, #4e4376);
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.15;
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 3.2rem;
   margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 header p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
 }
 
 .profile {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .profile-img {
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  border: 6px solid #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .profile-img:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.social-links {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: #e6f0fa;
+}
+
+.social-links a:hover::before {
+  opacity: 1;
+}
+
+.social-links img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover img {
+  transform: scale(1.2);
 }
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .info-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #2a5298;
 }
 
 .info-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .info-card h3 {
-  color: #2b5876;
+  color: #1e3c72;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.info-card p {
   margin-bottom: 0.5rem;
 }
 
-.about {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.about, .achievements {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
 }
 
-.about h2 {
-  color: #2b5876;
+.about h2, .achievements h2 {
+  color: #1e3c72;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.achievements ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.achievements ul li {
+  position: relative;
   margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.achievements ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #2a5298;
+  font-weight: bold;
 }
 
 footer {
   text-align: center;
-  padding: 2rem;
-  background: #2b5876;
+  padding: 2.5rem;
+  background: #1e3c72;
   color: white;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
   header h1 {
-    font-size: 2rem;
+      font-size: 2.2rem;
+  }
+
+  header p {
+      font-size: 1.1rem;
   }
 
   .profile-img {
-    width: 150px;
-    height: 150px;
+      width: 180px;
+      height: 180px;
+  }
+
+  .social-links a {
+      width: 50px;
+      height: 50px;
+  }
+
+  .social-links img {
+      width: 28px;
+      height: 28px;
   }
 }
